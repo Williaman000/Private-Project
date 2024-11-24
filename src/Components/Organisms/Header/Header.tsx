@@ -6,8 +6,8 @@ const Header: React.FC = () => {
     <header className="header">
       <div className="header__logo">
         <img
-          src="/images/netflix-logo.png"
-          alt="Netflix Logo"
+          src="/Images/Logo/flame-1964066_1280.webp"
+          alt="Logo"
           className="header__logo-img"
         />
       </div>
