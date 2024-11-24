@@ -5,7 +5,7 @@ import Layout from './Components/Organisms/Layout/Layout'
 const App: React.FC = () => {
   return (
     <Layout>
-      <h1>Welcome to Netflix Clone</h1>
+      <h1>Welcome to William's world</h1>
       <p>Enjoy your favorite movies and series.</p>
     </Layout>
   );
