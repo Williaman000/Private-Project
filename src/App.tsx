@@ -9,8 +9,6 @@ import TermsOfUse from './Components/Pages/TermsOfUse.tsx/TermsOfUse';
 import ContactUs from './Components/Pages/ContactUs/ContactUs';
 import './App.module.sass';
 
-
-
 const App: React.FC = () => {
   return (
     <Router>
