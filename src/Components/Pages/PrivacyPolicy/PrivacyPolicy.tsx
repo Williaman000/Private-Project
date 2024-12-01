@@ -1,5 +1,6 @@
-import React from 'react';
-import styles from './PrivacyPolicy.module.sass';
+import React from "react";
+
+import styles from "./PrivacyPolicy.module.sass";
 
 const PrivacyPolicy: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ const PrivacyPolicy: React.FC = () => {
       <section>
         <h2>1. Introduction</h2>
         <p>
-          Welcome to WillAn's World! Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your personal information.
+          Welcome to WillAn World! Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your personal information.
         </p>
       </section>
       <section>

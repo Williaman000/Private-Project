@@ -1,15 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styles from './Header.module.sass';
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./Header.module.sass";
 
 const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
         <Link to="/">
-        <picture>
-          <img src="src/Images/Logo/JunhoAn.png" alt="WillAn's logo" />
-        </picture>
+          <picture>
+            <img src="src/Images/Logo/JunhoAn.png" alt="WillAn's logo" />
+          </picture>
         </Link>
       </div>
       <nav>

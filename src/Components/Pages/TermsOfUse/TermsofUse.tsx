@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './TermsofUse.module.sass';
+import React from "react";
+import styles from "./TermsofUse.module.sass";
 
 const TermsofUse: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ const TermsofUse: React.FC = () => {
       <section>
         <h2>1. Introduction</h2>
         <p>
-          Welcome to WillAn's World! By accessing or using our services, you agree to be bound by these Terms of Use.
+          Welcome to WillAn World! By accessing or using our services, you agree to be bound by these Terms of Use.
         </p>
       </section>
       <section>
@@ -32,7 +32,7 @@ const TermsofUse: React.FC = () => {
       <section>
         <h2>4. Intellectual Property</h2>
         <p>
-          All content, trademarks, and materials on the service are the property of WillAn's World. Unauthorized use is prohibited.
+          All content, trademarks, and materials on the service are the property of WillAn World. Unauthorized use is prohibited.
         </p>
       </section>
       <section>
@@ -44,7 +44,7 @@ const TermsofUse: React.FC = () => {
       <section>
         <h2>6. Limitation of Liability</h2>
         <p>
-          WillAn's World is not liable for any damages or losses resulting from the use or inability to use the service.
+          WillAn World is not liable for any damages or losses resulting from the use or inability to use the service.
         </p>
       </section>
       <section>
