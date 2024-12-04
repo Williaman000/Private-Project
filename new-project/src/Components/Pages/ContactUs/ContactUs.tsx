@@ -26,7 +26,7 @@ const ContactUs: React.FC = () => {
       <p>We'd love to hear from you! Please fill out the form below, and we'll get in touch with you as soon as possible.</p>
       <div className={styles.contactInfo}>
         <p>Email: <a href="mailto:support@willansworld.com">support@willansworld.com</a></p>
-        <p>Phone: +1 234 567 890</p>
+        <p>Phone: +81-03-4577-6569</p>
       </div>
       <form className={styles.contactForm} onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
