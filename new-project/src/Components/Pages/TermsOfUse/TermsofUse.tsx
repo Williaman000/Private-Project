@@ -5,7 +5,7 @@ const TermsofUse: React.FC = () => {
   return (
     <div className={styles.termsOfUse}>
       <h1>Terms of Use</h1>
-      <p>Effective Date: November 24, 2024</p>
+      <p className={styles.effectiveDate}>Effective Date: November 24, 2024</p>
       <section>
         <h2>1. Introduction</h2>
         <p>

@@ -1,12 +1,11 @@
 import React from "react";
-
 import styles from "./PrivacyPolicy.module.sass";
 
 const PrivacyPolicy: React.FC = () => {
   return (
     <div className={styles.privacyPolicy}>
       <h1>Privacy Policy</h1>
-      <p>Effective Date: November 24, 2024</p>
+      <p className={styles.effectiveDate}>Effective Date: November 24, 2024</p>
       <section>
         <h2>1. Introduction</h2>
         <p>
