@@ -7,7 +7,7 @@ import MyPage from './Components/Pages/Mypage/Mypage';
 import PrivacyPolicy from './Components/Pages/PrivacyPolicy/PrivacyPolicy';
 import TermsofUse from './Components/Pages/TermsOfUse/TermsofUse';
 import ContactUs from './Components/Pages/ContactUs/ContactUs';
-import styles from './App.module.sass'; // 스타일 import
+import styles from './App.module.sass'; 
 
 const App: React.FC = () => {
   return (
@@ -35,6 +35,20 @@ const App: React.FC = () => {
                         <p>Watch blockbuster hits like "Inception" and "Interstellar".</p>
                       </div>
                     </div>
+                  </section>
+                  <section className={styles.news}>
+                    <h2>News & Updates</h2>
+                    <ul>
+                      <li>
+                        <strong>December 2024:</strong> New movie categories added! Explore the latest sci-fi hits.
+                      </li>
+                      <li>
+                        <strong>January 2025:</strong> Series recommendations are now personalized for every user.
+                      </li>
+                      <li>
+                        <strong>February 2025:</strong> Exciting features coming soon - Stay tuned!
+                      </li>
+                    </ul>
                   </section>
                 </div>
               }
