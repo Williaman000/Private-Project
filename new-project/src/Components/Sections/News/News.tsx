@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './News.module.sass';
-import { NewsProps } from '../../../types/News/news';
+import { NewsProps } from '../../../types/News/newstype';
 
 const News: React.FC<NewsProps> = ({ articles }) => {
   return (

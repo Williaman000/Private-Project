@@ -12,6 +12,7 @@ import Recommendations from './Components/Sections/Recommendations/Recommendatio
 import News from './Components/Sections/News/News'; 
 import styles from './App.module.sass'; 
 import AboutUs from './Components/Pages/AboutUs/AboutUs';
+import Testimonials from './Components/Sections/Testimonials/Testimonials';
 
 const Home: React.FC = () => {
 
@@ -33,6 +34,7 @@ const Home: React.FC = () => {
       <Welcome />
       <Recommendations />
       <News articles={dummyArticles} />
+      <Testimonials />
     </div>
   );
 };
