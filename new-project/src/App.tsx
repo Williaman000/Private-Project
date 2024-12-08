@@ -11,6 +11,7 @@ import Welcome from './Components/Sections/Welcome/Welcome';
 import Recommendations from './Components/Sections/Recommendations/Recommendations'; 
 import News from './Components/Sections/News/News'; 
 import styles from './App.module.sass'; 
+import AboutUs from './Components/Pages/AboutUs/AboutUs';
 
 const Home: React.FC = () => {
   return (
@@ -32,6 +33,7 @@ const App: React.FC = () => {
             <Route path='/series' element={<Series />} />
             <Route path='/movies' element={<Movies />} />
             <Route path='/mypage' element={<MyPage />} />
+            <Route path='/about-us' element={<AboutUs />} />
             <Route path='/privacy-policy' element={<PrivacyPolicy />} />
             <Route path='/terms-of-use' element={<TermsofUse />} />
             <Route path='/contact-us' element={<ContactUs />} />
