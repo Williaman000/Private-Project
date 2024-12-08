@@ -7,10 +7,10 @@ import MyPage from './Components/Pages/Mypage/Mypage';
 import PrivacyPolicy from './Components/Pages/PrivacyPolicy/PrivacyPolicy';
 import TermsofUse from './Components/Pages/TermsOfUse/TermsofUse';
 import ContactUs from './Components/Pages/ContactUs/ContactUs';
-import styles from './App.module.sass'; // 스타일 import
+import styles from './App.module.sass'; 
 
 const Home: React.FC = () => {
-  const navigate = useNavigate(); // React Router의 네비게이션 함수
+  const navigate = useNavigate(); 
 
   return (
     <div>
