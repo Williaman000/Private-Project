@@ -25,11 +25,13 @@ const AboutUs: React.FC = () => {
         </ul>
       </section>
       <section>
-        <h2>Contact Us</h2>
-        <p>
-          Got questions or feedback? Reach out to us at{' '}
-          <a href="mailto:support@willansworld.com">support@willansworld.com</a>. We'd love to hear from you!
-        </p>
+        <a href='/contact-us'>
+            <h2>Contact Us</h2>
+            <p>
+                Got questions or feedback? Reach out to us at
+                <a href="mailto:support@willansworld.com">support@willansworld.com</a>. We'd love to hear from you!
+            </p>
+        </a>
       </section>
     </div>
   );
