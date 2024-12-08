@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './Components/Organisms/Layout/Layout';
 import Series from './Components/Pages/Series/Series';
 import Movies from './Components/Pages/Movies/Movies';
@@ -7,46 +7,17 @@ import MyPage from './Components/Pages/Mypage/Mypage';
 import PrivacyPolicy from './Components/Pages/PrivacyPolicy/PrivacyPolicy';
 import TermsofUse from './Components/Pages/TermsOfUse/TermsofUse';
 import ContactUs from './Components/Pages/ContactUs/ContactUs';
+import Welcome from './Components/Sections/Welcome/Welcome'; 
+import Recommendations from './Components/Sections/Recommendations/Recommendations'; 
+import News from './Components/Sections/News/News'; 
 import styles from './App.module.sass'; 
 
 const Home: React.FC = () => {
-  const navigate = useNavigate(); 
-
   return (
     <div>
-      <div className={styles.welcome}>
-        <h1>Welcome to WillAn world</h1>
-        <p>Explore Series, Movies, and more!</p>
-      </div>
-      <section className={styles.recommendations}>
-        <h2>Recommended for You</h2>
-        <div className={styles.contentGrid}>
-          {/* Popular Series */}
-          <div className={styles.card} onClick={() => navigate('/series')}>
-            <h3>Popular Series</h3>
-            <p>Explore top-rated series like "Breaking Bad" and "Stranger Things".</p>
-          </div>
-          {/* Trending Movies */}
-          <div className={styles.card} onClick={() => navigate('/movies')}>
-            <h3>Trending Movies</h3>
-            <p>Watch blockbuster hits like "Inception" and "Interstellar".</p>
-          </div>
-        </div>
-      </section>
-      <section className={styles.news}>
-        <h2>News & Updates</h2>
-        <ul>
-          <li>
-            <strong>December 2024:</strong> New movie categories added! Explore the latest sci-fi hits.
-          </li>
-          <li>
-            <strong>January 2025:</strong> Series recommendations are now personalized for every user.
-          </li>
-          <li>
-            <strong>February 2025:</strong> Exciting features coming soon - Stay tuned!
-          </li>
-        </ul>
-      </section>
+      <Welcome />
+      <Recommendations />
+      <News />
     </div>
   );
 };
