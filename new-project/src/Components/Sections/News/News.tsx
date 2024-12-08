@@ -1,20 +1,20 @@
 import React from 'react';
 import styles from './News.module.sass';
+import { NewsProps } from '../../../types/News/news';
 
-const News: React.FC = () => {
+const News: React.FC<NewsProps> = ({ articles }) => {
   return (
     <section className={styles.news}>
-      <h2>News & Updates</h2>
+      <h2>Latest News</h2>
       <ul>
-        <li>
-          <strong>December 2024:</strong> New movie categories added! Explore the latest sci-fi hits.
-        </li>
-        <li>
-          <strong>January 2025:</strong> Series recommendations are now personalized for every user.
-        </li>
-        <li>
-          <strong>February 2025:</strong> Exciting features coming soon - Stay tuned!
-        </li>
+        {articles.map((article, index) => (
+          <li key={index} className={styles.article}>
+            <a href={article.url} target="_blank" rel="noopener noreferrer">
+              <h3>{article.title}</h3>
+              <p>{article.description}</p>
+            </a>
+          </li>
+        ))}
       </ul>
     </section>
   );
