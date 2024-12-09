@@ -14,22 +14,9 @@ import styles from './App.module.sass';
 import AboutUs from './Components/Pages/AboutUs/AboutUs';
 import Testimonials from './Components/Sections/Testimonials/Testimonials';
 import CallToAction from './Components/Sections/CTA/CallToAction';
+import dummyArticles from './data/articles';
 
 const Home: React.FC = () => {
-
-  const dummyArticles = [
-    {
-      title: 'Breaking: New Feature Launched!',
-      description: 'Discover the latest updates on our platform.',
-      url: '/news/list',
-    },
-    {
-      title: 'Community Event Coming Soon!',
-      description: 'Join us for an exciting event this weekend.',
-      url: '/news/list',
-    },
-  ];
-
   return (
     <div>
       <Welcome />
