@@ -10,11 +10,11 @@ import ContactUs from './Components/Pages/ContactUs/ContactUs';
 import Welcome from './Components/Sections/Welcome/Welcome'; 
 import Recommendations from './Components/Sections/Recommendations/Recommendations'; 
 import News from './Components/Sections/News/News'; 
-import styles from './App.module.sass'; 
 import AboutUs from './Components/Pages/AboutUs/AboutUs';
 import Testimonials from './Components/Sections/Testimonials/Testimonials';
 import CallToAction from './Components/Sections/CTA/CallToAction';
 import dummyArticles from './data/articles';
+import styles from './App.module.sass'; 
 
 const Home: React.FC = () => {
   return (
