@@ -14,6 +14,7 @@ import AboutUs from './Components/Pages/AboutUs/AboutUs';
 import Testimonials from './Components/Sections/Testimonials/Testimonials';
 import CallToAction from './Components/Sections/CTA/CallToAction';
 import dummyArticles from './data/articles';
+import FAQ from './Components/Sections/FAQ/FAQ';
 import styles from './App.module.sass'; 
 
 const Home: React.FC = () => {
@@ -24,6 +25,7 @@ const Home: React.FC = () => {
       <News articles={dummyArticles} />
       <Testimonials />
       <CallToAction />
+      <FAQ />
     </div>
   );
 };
