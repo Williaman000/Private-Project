@@ -1,28 +1,24 @@
+@import '../../../styles/_globalStyles.sass'
+
 .faq
-    padding: 30px
-    background-color: #ffffff
+    @extend .section
+
+.faqList
+    display: flex
+    flex-direction: column
+    gap: 20px
+
+.faqItem
+    background-color: lighten($background-color, 10%)
     border-radius: 8px
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
-    max-width: 800px
-    margin: 20px auto
+    padding: 20px
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
 
-h2
-    text-align: center
-    color: #ff6f61
-    margin-bottom: 20px
-
-ul
-    list-style: none
-    padding: 0
-
-li
-    margin-bottom: 20px
-
-h4
-    font-size: 1.2rem
-    color: #333
+h3
+    color: $highlight-color
+    margin-bottom: 10px
 
 p
+    color: $text-color
     font-size: 1rem
-    color: #555
-    margin-top: 5px
+    line-height: 1.6
