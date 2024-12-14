@@ -1,12 +1,10 @@
 import React from 'react';
 import styles from './FAQ.module.sass';
 
+import { faqData } from '../../../data/faqData';
+
 const FAQ: React.FC = () => {
-  const faqs = [
-    { question: 'What is WillAn World?', answer: 'WillAn World is a platform for exploring movies and series.' },
-    { question: 'Is it free to use?', answer: 'Yes, our basic services are free to use.' },
-    { question: 'How can I contact support?', answer: 'You can reach us at support@willansworld.com.' },
-  ];
+  const faqs = faqData;
 
   return (
     <div className={styles.faq}>
