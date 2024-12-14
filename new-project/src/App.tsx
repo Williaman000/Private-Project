@@ -19,7 +19,7 @@ import styles from './App.module.sass';
 
 const Home: React.FC = () => {
   return (
-    <div>
+    <div className={styles.component_wrapper}>
       <Welcome />
       <Recommendations />
       <News articles={dummyArticles} />
