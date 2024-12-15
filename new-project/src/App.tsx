@@ -16,6 +16,7 @@ import CallToAction from './Components/Sections/CTA/CallToAction';
 import dummyArticles from './data/articles';
 import FAQ from './Components/Sections/FAQ/FAQ';
 import styles from './App.module.sass'; 
+import TrendingNow from './Components/Sections/TrendingNow/TrendingNow';
 
 const Home: React.FC = () => {
   return (
@@ -23,6 +24,7 @@ const Home: React.FC = () => {
       <Welcome />
       <Recommendations />
       <News articles={dummyArticles} />
+      <TrendingNow />
       <Testimonials />
       <CallToAction />
       <FAQ />
