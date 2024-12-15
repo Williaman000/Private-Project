@@ -1,30 +1,30 @@
 import React, { useState } from 'react';
 import styles from './Mypage.module.sass';
+import LoginButton from '../../Atoms/LoginButton/LoginButton';
 
 const MyPage: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const [error, setError] = useState("");
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleLogin = () => {
-    if (email === "example@email.com" && password === "password123") {
-      setUsername("John Doe"); 
-      setIsLoggedIn(true); 
-      setError(""); 
+    if (email === 'example@email.com' && password === 'password123') {
+      setUsername('John Doe');
+      setIsLoggedIn(true);
+      setError('');
     } else {
-      setError("Invalid email or password. Please try again.");
+      setError('Invalid email or password. Please try again.');
     }
   };
 
   const handleLogout = () => {
-    setIsLoggedIn(false); 
-    setEmail(""); 
-    setPassword(""); 
-    setError(""); 
+    setIsLoggedIn(false);
+    setEmail('');
+    setPassword('');
+    setError('');
   };
 
   return (
@@ -34,34 +34,32 @@ const MyPage: React.FC = () => {
           <h1>Login</h1>
           <form
             onSubmit={(e) => {
-              e.preventDefault(); 
-              handleLogin(); 
+              e.preventDefault();
+              handleLogin();
             }}
           >
             <div className={styles.inputGroup}>
-              <label htmlFor="email">Email:</label>
+              <label htmlFor='email'>Email:</label>
               <input
-                type="email"
-                id="email"
+                type='email'
+                id='email'
                 value={email}
-                onChange={(e) => setEmail(e.target.value)} 
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
             <div className={styles.inputGroup}>
-              <label htmlFor="password">Password:</label>
+              <label htmlFor='password'>Password:</label>
               <input
-                type="password"
-                id="password"
+                type='password'
+                id='password'
                 value={password}
-                onChange={(e) => setPassword(e.target.value)} 
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
-            {error && <p className={styles.error}>{error}</p>} 
-            <button type="submit" className={styles.loginButton}>
-              Log In
-            </button>
+            {error && <p className={styles.error}>{error}</p>}
+            <LoginButton label='Log In' />
           </form>
         </div>
       ) : (
