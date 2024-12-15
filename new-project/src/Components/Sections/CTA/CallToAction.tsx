@@ -11,7 +11,9 @@ const CallToAction: React.FC = () => {
     <section className={styles.callToAction}>
       <h2>Don't Miss Out!</h2>
       <p>Sign up today and start enjoying our amazing features!</p>
-      <CTAButton label="Get Started" onClick={handleCTAClick} />
+      <div className={styles.button_area}>
+        <CTAButton label="Get Started" onClick={handleCTAClick} />
+      </div>
     </section>
   );
 };
