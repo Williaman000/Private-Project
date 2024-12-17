@@ -1,8 +1,8 @@
 // Main container for the app
 .app
   font-family: Arial, sans-serif
-  color: #333
-  background-color: #f9f9f9
+  color: var(--text-color)
+  background-color: var(--background-color)
   min-height: 100vh
   margin: 0
   padding: 0
@@ -11,5 +11,9 @@
 
 .component_wrapper
   width: 100%
+  max-width: 1200px
   padding: 0 20px
   margin-inline: auto
+  background-color: var(--container-bg-color)
+  box-shadow: var(--box-shadow)
+  border-radius: 8px

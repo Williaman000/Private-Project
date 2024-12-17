@@ -17,6 +17,7 @@ import dummyArticles from './data/articles';
 import FAQ from './Components/Sections/FAQ/FAQ';
 import styles from './App.module.sass'; 
 import TrendingNow from './Components/Sections/TrendingNow/TrendingNow';
+import { ThemeProvider } from './Contexts/ThemeContext';
 
 const Home: React.FC = () => {
   return (
@@ -34,22 +35,24 @@ const Home: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <div className={styles.app}>
-      <Router>
-        <Layout>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/series' element={<Series />} />
-            <Route path='/movies' element={<Movies />} />
-            <Route path='/mypage' element={<MyPage />} />
-            <Route path='/about-us' element={<AboutUs />} />
-            <Route path='/privacy-policy' element={<PrivacyPolicy />} />
-            <Route path='/terms-of-use' element={<TermsofUse />} />
-            <Route path='/contact-us' element={<ContactUs />} />
-          </Routes>
-        </Layout>
-      </Router>
-    </div>
+    <ThemeProvider>
+      <div className={styles.app}>
+        <Router>
+          <Layout>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/series' element={<Series />} />
+              <Route path='/movies' element={<Movies />} />
+              <Route path='/mypage' element={<MyPage />} />
+              <Route path='/about-us' element={<AboutUs />} />
+              <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+              <Route path='/terms-of-use' element={<TermsofUse />} />
+              <Route path='/contact-us' element={<ContactUs />} />
+            </Routes>
+          </Layout>
+        </Router>
+      </div>
+    </ThemeProvider>
   );
 };
 
