@@ -7,6 +7,11 @@
     font-size: 1.8rem
     margin-bottom: 20px
 
+.carouselWrapper
+    position: relative
+    display: flex
+    align-items: center
+
 .carousel
     display: flex
     gap: 20px
@@ -14,6 +19,7 @@
     padding: 10px
     scrollbar-width: none
     -ms-overflow-style: none
+    scroll-behavior: smooth
 
     &::-webkit-scrollbar
         display: none
@@ -45,3 +51,30 @@
     font-weight: bold
     color: #fff
     -webkit-text-stroke: 1px black
+
+.slideButton
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    width: 40px
+    height: 40px
+    border: none
+    border-radius: 50%
+    background-color: rgba(0, 0, 0, 0.6)
+    color: #fff
+    font-size: 1.5rem
+    cursor: pointer
+    z-index: 10
+    display: flex
+    justify-content: center
+    align-items: center
+    transition: background-color 0.3s ease
+
+    &:hover
+        background-color: rgba(0, 0, 0, 0.8)
+
+    &.left
+        left: 10px
+
+    &.right
+        right: 10px
