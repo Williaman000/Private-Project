@@ -18,6 +18,7 @@ import FAQ from './Components/Sections/FAQ/FAQ';
 import styles from './App.module.sass'; 
 import TrendingNow from './Components/Sections/TrendingNow/TrendingNow';
 import { ThemeProvider } from './Contexts/ThemeContext';
+import { RecommendationProvider } from './Contexts/RecommendationContext';
 
 const Home: React.FC = () => {
   return (
@@ -36,6 +37,7 @@ const Home: React.FC = () => {
 const App: React.FC = () => {
   return (
     <ThemeProvider>
+      <RecommendationProvider>
       <div className={styles.app}>
         <Router>
           <Layout>
@@ -52,6 +54,7 @@ const App: React.FC = () => {
           </Layout>
         </Router>
       </div>
+      </RecommendationProvider>
     </ThemeProvider>
   );
 };

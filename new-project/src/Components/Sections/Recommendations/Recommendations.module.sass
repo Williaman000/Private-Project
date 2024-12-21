@@ -2,17 +2,35 @@
 
 .recommendations
     @extend .section
+    text-align: center
 
-.reviewGrid
+ul
+    list-style: none
     display: grid
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
     gap: 20px
 
-.reviewCard
-    background-color: lighten($background-color, 10%)
+.card
+    background-color: var(--container-bg-color)
+    padding: 15px
     border-radius: 8px
-    padding: 20px
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+    box-shadow: var(--box-shadow)
 
-h3, p
-    color: $text-color
+    h3
+        font-size: 1.2rem
+        margin-bottom: 5px
+
+    p
+        font-size: 0.9rem
+
+    button
+        margin-top: 10px
+        background-color: $highlight-color
+        color: white
+        border: none
+        padding: 8px 12px
+        border-radius: 4px
+        cursor: pointer
+
+    &:hover
+        background-color: darken($highlight-color, 10%)

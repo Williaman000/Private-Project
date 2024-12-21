@@ -1,23 +1,23 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRecommendation } from '../../../Contexts/RecommendationContext';
 import styles from './Recommendations.module.sass';
 
 const Recommendations: React.FC = () => {
-  const navigate = useNavigate();
+  const { recommendations, addLike } = useRecommendation();
 
   return (
     <section className={styles.recommendations}>
-      <h2>Recommended for You</h2>
-      <div className={styles.contentGrid}>
-        <div className={styles.card} onClick={() => navigate('/series')}>
-          <h3>Popular Series</h3>
-          <p>Explore top-rated series like "Breaking Bad" and "Stranger Things".</p>
-        </div>
-        <div className={styles.card} onClick={() => navigate('/movies')}>
-          <h3>Trending Movies</h3>
-          <p>Watch blockbuster hits like "Inception" and "Interstellar".</p>
-        </div>
-      </div>
+      <h2>Personalized Recommendations</h2>
+      <ul>
+        {recommendations.map((item) => (
+          <li key={item.id} className={styles.card}>
+            <h3>{item.title}</h3>
+            <p>Category: {item.category}</p>
+            <p>Likes: {item.likes}</p>
+            <button onClick={() => addLike(item.id)}>👍 Like</button>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 };
