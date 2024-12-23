@@ -15,10 +15,11 @@ import Testimonials from './Components/Sections/Testimonials/Testimonials';
 import CallToAction from './Components/Sections/CTA/CallToAction';
 import dummyArticles from './data/articles';
 import FAQ from './Components/Sections/FAQ/FAQ';
+import TrendingMovies from './Components/Sections/TrendingMovies/TrendingMovies';
+import NotFound from './Components/Pages/NotFound/NotFound'; // 404 페이지 추가
 import styles from './App.module.sass'; 
 import { ThemeProvider } from './Contexts/ThemeContext';
 import { RecommendationProvider } from './Contexts/RecommendationContext';
-import TrendingMovies from './Components/Sections/TrendingMovies/TrendingMovies';
 
 const Home: React.FC = () => {
   return (
@@ -38,22 +39,23 @@ const App: React.FC = () => {
   return (
     <ThemeProvider>
       <RecommendationProvider>
-      <div className={styles.app}>
-        <Router>
-          <Layout>
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/series' element={<Series />} />
-              <Route path='/movies' element={<Movies />} />
-              <Route path='/mypage' element={<MyPage />} />
-              <Route path='/about-us' element={<AboutUs />} />
-              <Route path='/privacy-policy' element={<PrivacyPolicy />} />
-              <Route path='/terms-of-use' element={<TermsofUse />} />
-              <Route path='/contact-us' element={<ContactUs />} />
-            </Routes>
-          </Layout>
-        </Router>
-      </div>
+        <div className={styles.app}>
+          <Router>
+            <Layout>
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/series' element={<Series />} />
+                <Route path='/movies' element={<Movies />} />
+                <Route path='/mypage' element={<MyPage />} />
+                <Route path='/about-us' element={<AboutUs />} />
+                <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+                <Route path='/terms-of-use' element={<TermsofUse />} />
+                <Route path='/contact-us' element={<ContactUs />} />
+                <Route path='*' element={<NotFound />} /> {/* 404 페이지 라우트 추가 */}
+              </Routes>
+            </Layout>
+          </Router>
+        </div>
       </RecommendationProvider>
     </ThemeProvider>
   );
