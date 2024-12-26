@@ -14,7 +14,7 @@ import Testimonials from './Components/Sections/Testimonials/Testimonials';
 import CallToAction from './Components/Sections/CTA/CallToAction';
 import FAQ from './Components/Sections/FAQ/FAQ';
 import TrendingMovies from './Components/Sections/TrendingMovies/TrendingMovies';
-import NotFound from './Components/Pages/NotFound/NotFound'; // 404 페이지 추가
+import NotFound from './Components/Pages/NotFound/NotFound';
 import styles from './App.module.sass'; 
 import { ThemeProvider } from './Contexts/ThemeContext';
 import { RecommendationProvider } from './Contexts/RecommendationContext';
