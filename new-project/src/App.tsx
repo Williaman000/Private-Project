@@ -9,24 +9,23 @@ import TermsofUse from './Components/Pages/TermsOfUse/TermsofUse';
 import ContactUs from './Components/Pages/ContactUs/ContactUs';
 import Welcome from './Components/Sections/Welcome/Welcome'; 
 import Recommendations from './Components/Sections/Recommendations/Recommendations'; 
-import News from './Components/Sections/News/News'; 
 import AboutUs from './Components/Pages/AboutUs/AboutUs';
 import Testimonials from './Components/Sections/Testimonials/Testimonials';
 import CallToAction from './Components/Sections/CTA/CallToAction';
-import dummyArticles from './data/articles';
 import FAQ from './Components/Sections/FAQ/FAQ';
 import TrendingMovies from './Components/Sections/TrendingMovies/TrendingMovies';
 import NotFound from './Components/Pages/NotFound/NotFound'; // 404 페이지 추가
 import styles from './App.module.sass'; 
 import { ThemeProvider } from './Contexts/ThemeContext';
 import { RecommendationProvider } from './Contexts/RecommendationContext';
+import MovieNews from './Components/Sections/MovieNews/MovieNews';
 
 const Home: React.FC = () => {
   return (
     <div className={styles.component_wrapper}>
       <Welcome />
       <Recommendations />
-      <News articles={dummyArticles} />
+      <MovieNews />
       <TrendingMovies />
       <Testimonials />
       <CallToAction />
