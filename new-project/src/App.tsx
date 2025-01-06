@@ -19,12 +19,13 @@ import styles from './App.module.sass';
 import { ThemeProvider } from './Contexts/ThemeContext';
 import { RecommendationProvider } from './Contexts/RecommendationContext';
 import MovieNews from './Components/Sections/MovieNews/MovieNews';
+import NowPlaying from './Components/Sections/NowPlaying/NowPlaying';
 
 const Home: React.FC = () => {
   return (
     <div className={styles.component_wrapper}>
       <Welcome />
-      <Recommendations />
+      <NowPlaying />
       <MovieNews />
       <TrendingMovies />
       <Testimonials />
