@@ -20,6 +20,7 @@ import { RecommendationProvider } from "./Contexts/RecommendationContext";
 import MovieNews from "./Components/Sections/MovieNews/MovieNews";
 import NowPlaying from "./Components/Sections/NowPlaying/NowPlaying";
 import SearchAndFilter from "./Components/Sections/SearchAndFilter/SearchAndFilter";
+import SearchResults from "./Components/Pages/SearchResults/SearchResults";
 
 const Home: React.FC = () => {
   return (
@@ -53,7 +54,7 @@ const App: React.FC = () => {
                 <Route path="/terms-of-use" element={<TermsofUse />} />
                 <Route path="/contact-us" element={<ContactUs />} />
                 <Route path="*" element={<NotFound />} />{" "}
-                {/* 404 페이지 라우트 추가 */}
+                <Route path="/search" element={<SearchResults />} />
               </Routes>
             </Layout>
           </Router>
