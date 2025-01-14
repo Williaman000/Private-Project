@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { fetchNowPlayingMovies } from '../../../api/ nowPlaying';
-import styles from './NowPlaying.module.sass';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { fetchTrendingMovies } from "../../../api/tmdb";
+import styles from "./NowPlaying.module.sass";
 
 interface NowPlayingItem {
   id: number;
@@ -13,11 +14,16 @@ interface NowPlayingItem {
 const NowPlaying: React.FC = () => {
   const [movies, setMovies] = useState<NowPlayingItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const navigate = useNavigate();
+
+  const handlePosterClick = (id: number) => {
+    navigate(`/movie/${id}`);
+  };
 
   useEffect(() => {
     const getNowPlayingMovies = async () => {
       setLoading(true);
-      const data = await fetchNowPlayingMovies();
+      const data = await fetchTrendingMovies();
       setMovies(data);
       setLoading(false);
     };
@@ -33,7 +39,11 @@ const NowPlaying: React.FC = () => {
       ) : (
         <div className={styles.movieGrid}>
           {movies.slice(0, 6).map((movie) => (
-            <div key={movie.id} className={styles.movieCard}>
+            <div
+              key={movie.id}
+              className={styles.movieCard}
+              onClick={() => handlePosterClick(movie.id)}
+            >
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}

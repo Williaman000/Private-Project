@@ -21,6 +21,7 @@ import MovieNews from "./Components/Sections/MovieNews/MovieNews";
 import NowPlaying from "./Components/Sections/NowPlaying/NowPlaying";
 import SearchAndFilter from "./Components/Sections/SearchAndFilter/SearchAndFilter";
 import SearchResults from "./Components/Pages/SearchResults/SearchResults";
+import MovieDetails from "./Components/Pages/MovieDetails/MovieDetails";
 
 const Home: React.FC = () => {
   return (
@@ -28,7 +29,6 @@ const Home: React.FC = () => {
       <Welcome />
       <SearchAndFilter />
       <NowPlaying />
-      <MovieNews />
       <TrendingMovies />
       <Testimonials />
       <CallToAction />
@@ -55,6 +55,7 @@ const App: React.FC = () => {
                 <Route path="/contact-us" element={<ContactUs />} />
                 <Route path="*" element={<NotFound />} />{" "}
                 <Route path="/search" element={<SearchResults />} />
+                <Route path="/movie/:id" element={<MovieDetails />} />
               </Routes>
             </Layout>
           </Router>
