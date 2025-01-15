@@ -22,6 +22,7 @@ import NowPlaying from "./Components/Sections/NowPlaying/NowPlaying";
 import SearchAndFilter from "./Components/Sections/SearchAndFilter/SearchAndFilter";
 import SearchResults from "./Components/Pages/SearchResults/SearchResults";
 import MovieDetails from "./Components/Pages/MovieDetails/MovieDetails";
+import Favorites from "./Components/Pages/Favorites/Favorites";
 
 const Home: React.FC = () => {
   return (
@@ -56,6 +57,7 @@ const App: React.FC = () => {
                 <Route path="*" element={<NotFound />} />{" "}
                 <Route path="/search" element={<SearchResults />} />
                 <Route path="/movie/:id" element={<MovieDetails />} />
+                <Route path="/favorites" element={<Favorites />} />
               </Routes>
             </Layout>
           </Router>
