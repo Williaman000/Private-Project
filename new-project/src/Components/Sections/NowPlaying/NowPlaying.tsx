@@ -43,6 +43,8 @@ const NowPlaying: React.FC = () => {
               key={movie.id}
               className={styles.movieCard}
               onClick={() => handlePosterClick(movie.id)}
+              role="button"
+              tabIndex={0}
             >
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
