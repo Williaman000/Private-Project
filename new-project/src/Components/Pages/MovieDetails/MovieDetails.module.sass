@@ -1,19 +1,39 @@
+@import '../../../styles/_globalStyles.sass'
+
 .movieDetails
+    @extend .section
+    display: flex
+    flex-direction: column
+    align-items: center
+    text-align: left
     padding: 20px
-    color: var(--text-color)
 
 .header
     display: flex
-    gap: 20px
+    flex-wrap: wrap
+    max-width: 900px
+    background-color: var(--container-bg-color)
+    border-radius: 8px
+    padding: 20px
+    box-shadow: var(--box-shadow)
 
-img
-    width: 300px
-    border-radius: 10px
+    img
+        width: 300px
+        border-radius: 8px
+        margin-right: 20px
 
 .info
+    flex: 1
+    display: flex
+    flex-direction: column
+    justify-content: center
+
     h1
         font-size: 2rem
+        color: var(--highlight-color)
         margin-bottom: 10px
 
     p
-        margin: 5px 0
+        font-size: 1rem
+        color: var(--text-color)
+        margin-bottom: 5px

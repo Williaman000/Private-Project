@@ -17,7 +17,6 @@ import NotFound from "./Components/Pages/NotFound/NotFound";
 import styles from "./App.module.sass";
 import { ThemeProvider } from "./Contexts/ThemeContext";
 import { RecommendationProvider } from "./Contexts/RecommendationContext";
-import MovieNews from "./Components/Sections/MovieNews/MovieNews";
 import NowPlaying from "./Components/Sections/NowPlaying/NowPlaying";
 import SearchAndFilter from "./Components/Sections/SearchAndFilter/SearchAndFilter";
 import SearchResults from "./Components/Pages/SearchResults/SearchResults";
