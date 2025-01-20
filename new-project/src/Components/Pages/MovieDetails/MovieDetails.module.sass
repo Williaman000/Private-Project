@@ -37,3 +37,41 @@
         font-size: 1rem
         color: var(--text-color)
         margin-bottom: 5px
+
+// Similar Movies Section
+.similarMovies
+    margin-top: 40px
+    text-align: center
+
+    h2
+        font-size: 1.5rem
+        color: var(--highlight-color)
+        margin-bottom: 20px
+
+.similarGrid
+    display: flex
+    gap: 15px
+    overflow-x: auto
+    padding: 10px
+    scrollbar-width: none
+    -ms-overflow-style: none
+
+    &::-webkit-scrollbar
+        display: none
+
+.similarCard
+    min-width: 150px
+    cursor: pointer
+    transition: transform 0.3s ease
+
+    &:hover
+        transform: scale(1.1)
+
+    img
+        width: 100%
+        border-radius: 8px
+
+    h3
+        font-size: 0.9rem
+        color: var(--text-color)
+        margin-top: 5px

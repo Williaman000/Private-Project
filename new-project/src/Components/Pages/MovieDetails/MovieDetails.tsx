@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { fetchMovieDetails } from "../../../api/tmdb";
+import { useParams, useNavigate } from "react-router-dom";
+import { fetchMovieDetails, fetchSimilarMovies } from "../../../api/tmdb";
 import styles from "./MovieDetails.module.sass";
 
 interface MovieDetailsData {
@@ -14,11 +14,19 @@ interface MovieDetailsData {
   runtime: number;
 }
 
+interface SimilarMovie {
+  id: number;
+  title: string;
+  poster_path: string;
+}
+
 const MovieDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [movie, setMovie] = useState<MovieDetailsData | null>(null);
+  const [similarMovies, setSimilarMovies] = useState<SimilarMovie[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getMovieDetails = async () => {
@@ -28,6 +36,10 @@ const MovieDetails: React.FC = () => {
       try {
         const data = await fetchMovieDetails(Number(id));
         setMovie(data);
+
+        // Fetch similar movies
+        const similarData = await fetchSimilarMovies(Number(id));
+        setSimilarMovies(similarData);
       } catch (err) {
         setError("Failed to fetch movie details.");
       } finally {
@@ -69,6 +81,30 @@ const MovieDetails: React.FC = () => {
           </p>
         </div>
       </div>
+
+      {/* Similar Movies Section */}
+      {similarMovies.length > 0 && (
+        <div className={styles.similarMovies}>
+          <h2>You May Also Like</h2>
+          <div className={styles.similarGrid}>
+            {similarMovies.map((simMovie) => (
+              <div
+                key={simMovie.id}
+                className={styles.similarCard}
+                onClick={() => navigate(`/movie/${simMovie.id}`)}
+                role="button"
+                tabIndex={0}
+              >
+                <img
+                  src={`https://image.tmdb.org/t/p/w300${simMovie.poster_path}`}
+                  alt={simMovie.title}
+                />
+                <h3>{simMovie.title}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
