@@ -17,6 +17,7 @@ import NotFound from "./Components/Pages/NotFound/NotFound";
 import styles from "./App.module.sass";
 import { ThemeProvider } from "./Contexts/ThemeContext";
 import { RecommendationProvider } from "./Contexts/RecommendationContext";
+import { FavoritesProvider } from "./Contexts/FavoritesContext";
 import NowPlaying from "./Components/Sections/NowPlaying/NowPlaying";
 import SearchAndFilter from "./Components/Sections/SearchAndFilter/SearchAndFilter";
 import SearchResults from "./Components/Pages/SearchResults/SearchResults";
@@ -42,27 +43,32 @@ const App: React.FC = () => {
   return (
     <ThemeProvider>
       <RecommendationProvider>
-        <div className={styles.app}>
-          <Router>
-            <Layout>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/series" element={<Series />} />
-                <Route path="/movies" element={<Movies />} />
-                <Route path="/mypage" element={<MyPage />} />
-                <Route path="/about-us" element={<AboutUs />} />
-                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="/terms-of-use" element={<TermsofUse />} />
-                <Route path="/contact-us" element={<ContactUs />} />
-                <Route path="*" element={<NotFound />} />{" "}
-                <Route path="/search" element={<SearchResults />} />
-                <Route path="/movie/:id" element={<MovieDetails />} />
-                <Route path="/favorites" element={<Favorites />} />
-                <Route path="/movies/:genreId" element={<MoviesByCategory />} />
-              </Routes>
-            </Layout>
-          </Router>
-        </div>
+        <FavoritesProvider>
+          <div className={styles.app}>
+            <Router>
+              <Layout>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/series" element={<Series />} />
+                  <Route path="/movies" element={<Movies />} />
+                  <Route path="/mypage" element={<MyPage />} />
+                  <Route path="/about-us" element={<AboutUs />} />
+                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                  <Route path="/terms-of-use" element={<TermsofUse />} />
+                  <Route path="/contact-us" element={<ContactUs />} />
+                  <Route path="*" element={<NotFound />} />{" "}
+                  <Route path="/search" element={<SearchResults />} />
+                  <Route path="/movie/:id" element={<MovieDetails />} />
+                  <Route path="/favorites" element={<Favorites />} />
+                  <Route
+                    path="/movies/:genreId"
+                    element={<MoviesByCategory />}
+                  />
+                </Routes>
+              </Layout>
+            </Router>
+          </div>
+        </FavoritesProvider>
       </RecommendationProvider>
     </ThemeProvider>
   );

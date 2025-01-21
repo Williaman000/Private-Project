@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useFavorites } from "../../../Contexts/FavoritesContext";
 import styles from "./FavoriteButton.module.sass";
 
@@ -12,14 +12,21 @@ interface FavoriteButtonProps {
 
 const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movie }) => {
   const { favorites, addFavorite, removeFavorite } = useFavorites();
-  const isFavorite = favorites.some((fav) => fav.id === movie.id);
+  const [isFavorite, setIsFavorite] = useState(false);
 
+  // ✅ Sync local state with context
+  useEffect(() => {
+    setIsFavorite(favorites.some((fav) => fav.id === movie.id));
+  }, [favorites, movie.id]);
+
+  // ✅ Handle favorite toggle
   const handleClick = () => {
     if (isFavorite) {
       removeFavorite(movie.id);
     } else {
       addFavorite(movie);
     }
+    setIsFavorite(!isFavorite);
   };
 
   return (
