@@ -12,28 +12,32 @@ const SearchResults: React.FC = () => {
 
   useEffect(() => {
     const getResults = async () => {
-      if (query) {
-        try {
-          const data = await fetchSearchResults(query);
-          setResults(data.results || []);
-        } catch (err) {
-          setError("Failed to fetch results.");
-        } finally {
-          setIsLoading(false);
-        }
+      if (!query) return;
+
+      setIsLoading(true);
+      try {
+        const data = await fetchSearchResults(query);
+        setResults(data.results || []);
+      } catch (err) {
+        setError("Failed to fetch results.");
+      } finally {
+        setIsLoading(false);
       }
     };
+
     getResults();
   }, [query]);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  if (isLoading) return <p className={styles.loading}>Loading...</p>;
+  if (error) return <p className={styles.error}>{error}</p>;
 
   return (
     <div className={styles.searchResults}>
       <h2>Search Results for "{query}"</h2>
       {results.length === 0 ? (
-        <p>No results found.</p>
+        <p className={styles.noResults}>
+          No results found. Try another search.
+        </p>
       ) : (
         <div className={styles.resultsGrid}>
           {results.map((movie: any) => (
