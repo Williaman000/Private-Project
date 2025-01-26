@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchMovieDetails, fetchSimilarMovies } from "../../../api/tmdb";
+import ReviewForm from "../../Atoms/ReviewForm/ReviewForm";
+import ReviewList from "../../Atoms/ReviewList/ReviewList";
+import { useReviews } from "../../../Contexts/ReviewContext";
 import styles from "./MovieDetails.module.sass";
 
 interface MovieDetailsData {
@@ -20,25 +23,32 @@ interface SimilarMovie {
   poster_path: string;
 }
 
+interface Review {
+  id: number;
+  movieId: number;
+  content: string;
+}
+
 const MovieDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [movie, setMovie] = useState<MovieDetailsData | null>(null);
   const [similarMovies, setSimilarMovies] = useState<SimilarMovie[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
+  const { reviews, addReview } = useReviews();
 
   useEffect(() => {
-    const getMovieDetails = async () => {
-      if (!id) return;
+    if (!id) return;
 
+    const getMovieData = async () => {
       setLoading(true);
       try {
-        const data = await fetchMovieDetails(Number(id));
-        setMovie(data);
-
-        // Fetch similar movies
-        const similarData = await fetchSimilarMovies(Number(id));
+        const [movieData, similarData] = await Promise.all([
+          fetchMovieDetails(Number(id)),
+          fetchSimilarMovies(Number(id)),
+        ]);
+        setMovie(movieData);
         setSimilarMovies(similarData);
       } catch (err) {
         setError("Failed to fetch movie details.");
@@ -47,7 +57,7 @@ const MovieDetails: React.FC = () => {
       }
     };
 
-    getMovieDetails();
+    getMovieData();
   }, [id]);
 
   if (loading) return <p>Loading...</p>;
@@ -82,7 +92,18 @@ const MovieDetails: React.FC = () => {
         </div>
       </div>
 
-      {/* Similar Movies Section */}
+      <div className={styles.reviewsSection}>
+        <h2>Reviews</h2>
+        <ReviewForm movieId={movie.id} addReview={addReview} />
+        <ReviewList
+          reviews={
+            (Array.isArray(reviews[movie.id])
+              ? reviews[movie.id]
+              : []) as Review[]
+          }
+        />
+      </div>
+
       {similarMovies.length > 0 && (
         <div className={styles.similarMovies}>
           <h2>You May Also Like</h2>
