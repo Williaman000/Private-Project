@@ -8,9 +8,9 @@ interface Review {
 }
 
 interface ReviewContextType {
-  reviews: Review[];
+  reviews: Record<number, Review[]>; // 영화별 리뷰 저장
   addReview: (movieId: number, content: string) => void;
-  deleteReview: (id: number) => void;
+  deleteReview: (movieId: number, reviewId: number) => void;
 }
 
 const ReviewContext = createContext<ReviewContextType | undefined>(undefined);
@@ -18,7 +18,7 @@ const ReviewContext = createContext<ReviewContextType | undefined>(undefined);
 export const ReviewProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [reviews, setReviews] = useState<Review[]>([]);
+  const [reviews, setReviews] = useState<Record<number, Review[]>>({});
 
   useEffect(() => {
     const storedReviews = localStorage.getItem("reviews");
@@ -32,17 +32,24 @@ export const ReviewProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [reviews]);
 
   const addReview = (movieId: number, content: string) => {
-    const newReview = {
+    const newReview: Review = {
       id: Date.now(),
       movieId,
       content,
       date: new Date().toLocaleString(),
     };
-    setReviews((prev) => [...prev, newReview]);
+    setReviews((prev) => ({
+      ...prev,
+      [movieId]: [...(prev[movieId] || []), newReview],
+    }));
   };
 
-  const deleteReview = (id: number) => {
-    setReviews((prev) => prev.filter((review) => review.id !== id));
+  const deleteReview = (movieId: number, reviewId: number) => {
+    setReviews((prev) => ({
+      ...prev,
+      [movieId]:
+        prev[movieId]?.filter((review) => review.id !== reviewId) || [],
+    }));
   };
 
   return (

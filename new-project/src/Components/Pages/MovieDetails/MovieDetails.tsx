@@ -23,12 +23,6 @@ interface SimilarMovie {
   poster_path: string;
 }
 
-interface Review {
-  id: number;
-  movieId: number;
-  content: string;
-}
-
 const MovieDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [movie, setMovie] = useState<MovieDetailsData | null>(null);
@@ -95,13 +89,7 @@ const MovieDetails: React.FC = () => {
       <div className={styles.reviewsSection}>
         <h2>Reviews</h2>
         <ReviewForm movieId={movie.id} addReview={addReview} />
-        <ReviewList
-          reviews={
-            (Array.isArray(reviews[movie.id])
-              ? reviews[movie.id]
-              : []) as Review[]
-          }
-        />
+        <ReviewList movieId={movie.id} reviews={reviews[movie.id] || []} />
       </div>
 
       {similarMovies.length > 0 && (
