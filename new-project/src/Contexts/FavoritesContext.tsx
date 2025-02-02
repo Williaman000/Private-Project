@@ -1,4 +1,10 @@
-import React, { createContext, useState, useContext, ReactNode } from "react";
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useEffect,
+} from "react";
 
 interface Movie {
   id: number;
@@ -19,16 +25,25 @@ const FavoritesContext = createContext<FavoritesContextType | undefined>(
 export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [favorites, setFavorites] = useState<Movie[]>([]);
+  const [favorites, setFavorites] = useState<Movie[]>(() => {
+    const storedFavorites = localStorage.getItem("favorites");
+    return storedFavorites ? JSON.parse(storedFavorites) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   const addFavorite = (movie: Movie) => {
     if (!favorites.find((fav) => fav.id === movie.id)) {
-      setFavorites([...favorites, movie]);
+      const updatedFavorites = [...favorites, movie];
+      setFavorites(updatedFavorites);
     }
   };
 
   const removeFavorite = (id: number) => {
-    setFavorites(favorites.filter((movie) => movie.id !== id));
+    const updatedFavorites = favorites.filter((movie) => movie.id !== id);
+    setFavorites(updatedFavorites);
   };
 
   return (
