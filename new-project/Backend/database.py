@@ -1,11 +1,27 @@
-movies_db = [
-    {"id": 1, "title": "Inception", "year": 2010},
-    {"id": 2, "title": "Interstellar", "year": 2014},
-    {"id": 3, "title": "The Dark Knight", "year": 2008},
-]
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
-series_db = [
-    {"id": 1, "title": "Breaking Bad", "seasons": 5},
-    {"id": 2, "title": "Game of Thrones", "seasons": 8},
-    {"id": 3, "title": "Stranger Things", "seasons": 4},
-]
+DATABASE_URL = "sqlite:///./movies.db"
+
+engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+class Movie(Base):
+    __tablename__ = "movies"
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, index=True)
+    overview = Column(String)
+    poster_path = Column(String)
+    vote_average = Column(Integer)
+
+class Series(Base):
+    __tablename__ = "series"
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, index=True)
+    seasons = Column(Integer)
+
+Base.metadata.create_all(bind=engine)
