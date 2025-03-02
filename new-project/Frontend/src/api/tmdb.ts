@@ -2,6 +2,7 @@ import axios from "axios";
 
 const API_KEY = "08664a7b18cca7f408e2f94625521a28";
 const BASE_URL = "https://api.themoviedb.org/3";
+const API_BASE_URL = "http://127.0.0.1:8000/api";
 
 export const fetchTrendingMovies = async () => {
   try {
@@ -60,14 +61,10 @@ export const fetchSearchResults = async (query: string) => {
 
 export const fetchMovies = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/movie/popular`, {
-      params: {
-        api_key: API_KEY,
-        language: "en-US",
-        page: 1,
-      },
-    });
-    return response.data.results || [];
+    const response = await fetch(`${API_BASE_URL}/movies`);
+    if (!response.ok) throw new Error("Failed to fetch movies");
+    const data = await response.json();
+    return data.movies || [];
   } catch (error) {
     console.error("Error fetching movies:", error);
     return [];
@@ -103,11 +100,15 @@ export const fetchMoviesByCategory = async (genreId: number) => {
 };
 
 export const fetchTVSeries = async () => {
-  const response = await fetch(
-    `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=en-US`
-  );
-  const data = await response.json();
-  return data.results;
+  try {
+    const response = await fetch(`${API_BASE_URL}/series`);
+    if (!response.ok) throw new Error("Failed to fetch TV series");
+    const data = await response.json();
+    return data.series || [];
+  } catch (error) {
+    console.error("Error fetching TV series:", error);
+    return [];
+  }
 };
 
 export const fetchTVSeriesDetails = async (id: number) => {

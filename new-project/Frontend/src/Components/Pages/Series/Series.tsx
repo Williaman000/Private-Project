@@ -21,7 +21,7 @@ const Series: React.FC = () => {
     const getSeries = async () => {
       try {
         const data = await fetchTVSeries();
-        setSeries(data);
+        setSeries(Array.isArray(data) ? data : []);
       } catch (err) {
         setError("Failed to fetch TV series.");
       } finally {

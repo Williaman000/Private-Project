@@ -20,11 +20,7 @@ const Movies: React.FC = () => {
     const getMovies = async () => {
       try {
         const data = await fetchMovies();
-        if (Array.isArray(data)) {
-          setMovies(data);
-        } else {
-          setMovies([]); 
-        }
+        setMovies(Array.isArray(data) ? data : []);
       } catch (err) {
         setError("Failed to fetch movies.");
       } finally {
@@ -40,7 +36,7 @@ const Movies: React.FC = () => {
 
   return (
     <div className={styles.movies}>
-      <h2>Movies</h2>
+      <h2>Popular Movies</h2>
       <div className={styles.movieGrid}>
         {movies.length > 0 ? (
           movies.map((movie) => (
