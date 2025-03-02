@@ -1,11 +1,11 @@
 from fastapi import FastAPI
+from routes import movies, series
 
-app = FastAPI()
+app = FastAPI(title="WillAn API", description="Movies and Series API", version="1.0")
+
+app.include_router(movies.router, prefix="/movies", tags=["Movies"])
+app.include_router(series.router, prefix="/series", tags=["Series"])
 
 @app.get("/")
-def read_root():
-    return {"message": "Welcome to the FastAPI backend for WillAn world!"}
-
-@app.get("/movies")
-def get_movies():
-    return {"movies": ["Movie 1", "Movie 2", "Movie 3"]}
+def home():
+    return {"message": "Welcome to WillAn API!"}
