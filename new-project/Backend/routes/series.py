@@ -1,19 +1,18 @@
-from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
-from database import SessionLocal, Series
+import requests
+from fastapi import APIRouter
+from config import TMDB_API_KEY, BASE_URL
 
 router = APIRouter()
 
-# DB 세션 의존성 주입
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+@router.get("/series")
+def get_series():
+    url = f"{BASE_URL}/tv/popular"
+    params = {"api_key": TMDB_API_KEY, "language": "en-US", "page": 1}
 
-# ✅ 시리즈 목록 조회
-@router.get("/")
-def get_series(db: Session = Depends(get_db)):
-    series = db.query(Series).all()
-    return {"series": series}
+    response = requests.get(url, params=params)
+    data = response.json()
+
+    if response.status_code != 200:
+        return {"error": "Failed to fetch data from TMDb"}
+
+    return {"series": data["results"]}

@@ -1,31 +1,18 @@
-from fastapi import FastAPI, Depends
-from sqlalchemy.orm import Session
-from database import engine, Base, SessionLocal
-from models import Movie
-from routes import movies
+import requests
+from fastapi import APIRouter
+from config import TMDB_API_KEY, BASE_URL
 
-app = FastAPI()
+router = APIRouter()
 
-Base.metadata.create_all(bind=engine)
+@router.get("/movies")
+def get_movies():
+    url = f"{BASE_URL}/movie/popular"
+    params = {"api_key": TMDB_API_KEY, "language": "en-US", "page": 1}
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+    response = requests.get(url, params=params)
+    data = response.json()
 
-def add_sample_movies():
-    db: Session = SessionLocal()
-    if db.query(Movie).count() == 0: 
-        sample_movies = [
-            Movie(title="Inception", overview="A mind-bending thriller.", poster_path="/inception.jpg", vote_average=8.8),
-            Movie(title="Interstellar", overview="A space exploration epic.", poster_path="/interstellar.jpg", vote_average=8.6),
-        ]
-        db.add_all(sample_movies)
-        db.commit()
-    db.close()
+    if response.status_code != 200:
+        return {"error": "Failed to fetch data from TMDb"}
 
-add_sample_movies()
-
-app.include_router(movies.router)
+    return {"movies": data["results"]}
