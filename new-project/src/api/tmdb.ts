@@ -82,3 +82,21 @@ export const fetchMoviesByCategory = async (genreId: number) => {
     throw error;
   }
 };
+
+export const fetchTVSeries = async () => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=en-US`
+  );
+  const data = await response.json();
+  return data.results;
+};
+
+export const fetchTVSeriesDetails = async (id: number) => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&language=en-US`
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch TV series details");
+  }
+  return await response.json();
+};

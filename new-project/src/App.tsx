@@ -24,6 +24,7 @@ import SearchResults from "./Components/Pages/SearchResults/SearchResults";
 import MovieDetails from "./Components/Pages/MovieDetails/MovieDetails";
 import Favorites from "./Components/Pages/Favorites/Favorites";
 import MoviesByCategory from "./Components/Pages/MoviesByCategory/MoviesByCategory";
+import SeriesDetails from "./Components/Pages/SeriesDetails/SeriesDetails";
 
 const Home: React.FC = () => {
   return (
@@ -50,6 +51,7 @@ const App: React.FC = () => {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/series" element={<Series />} />
+                  <Route path="/series/:id" element={<SeriesDetails />} />
                   <Route path="/movies" element={<Movies />} />
                   <Route path="/mypage" element={<MyPage />} />
                   <Route path="/about-us" element={<AboutUs />} />
