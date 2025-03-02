@@ -22,14 +22,16 @@ export const fetchMovieDetails = async (movieId: number) => {
     const response = await axios.get(`${BASE_URL}/movie/${movieId}`, {
       params: {
         api_key: API_KEY,
+        language: "en-US",
       },
     });
-    return response.data;
+    return response.data || null;
   } catch (error) {
     console.error("Error fetching movie details:", error);
-    throw error;
+    return null; 
   }
 };
+
 
 export const fetchSimilarMovies = async (movieId: number) => {
   try {
@@ -55,6 +57,23 @@ export const fetchSearchResults = async (query: string) => {
   });
   return response.data;
 };
+
+export const fetchMovies = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/movie/popular`, {
+      params: {
+        api_key: API_KEY,
+        language: "en-US",
+        page: 1,
+      },
+    });
+    return response.data.results || [];
+  } catch (error) {
+    console.error("Error fetching movies:", error);
+    return [];
+  }
+};
+
 
 export const fetchMovieGenres = async () => {
   try {
