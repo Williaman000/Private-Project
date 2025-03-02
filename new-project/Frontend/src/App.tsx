@@ -14,7 +14,6 @@ import CallToAction from "./Components/Sections/CTA/CallToAction";
 import FAQ from "./Components/Sections/FAQ/FAQ";
 import TrendingMovies from "./Components/Sections/TrendingMovies/TrendingMovies";
 import NotFound from "./Components/Pages/NotFound/NotFound";
-import styles from "./App.module.sass";
 import { ThemeProvider } from "./Contexts/ThemeContext";
 import { RecommendationProvider } from "./Contexts/RecommendationContext";
 import { FavoritesProvider } from "./Contexts/FavoritesContext";
@@ -26,6 +25,7 @@ import Favorites from "./Components/Pages/Favorites/Favorites";
 import MoviesByCategory from "./Components/Pages/MoviesByCategory/MoviesByCategory";
 import SeriesDetails from "./Components/Pages/SeriesDetails/SeriesDetails";
 import { ReviewProvider } from "./Contexts/ReviewContext";
+import styles from "./App.module.sass";
 
 const Home: React.FC = () => {
   return (
