@@ -25,6 +25,7 @@ import MovieDetails from "./Components/Pages/MovieDetails/MovieDetails";
 import Favorites from "./Components/Pages/Favorites/Favorites";
 import MoviesByCategory from "./Components/Pages/MoviesByCategory/MoviesByCategory";
 import SeriesDetails from "./Components/Pages/SeriesDetails/SeriesDetails";
+import { ReviewProvider } from "./Contexts/ReviewContext";
 
 const Home: React.FC = () => {
   return (
@@ -46,6 +47,7 @@ const App: React.FC = () => {
       <RecommendationProvider>
         <FavoritesProvider>
           <div className={styles.app}>
+            <ReviewProvider>
             <Router>
               <Layout>
                 <Routes>
@@ -69,6 +71,7 @@ const App: React.FC = () => {
                 </Routes>
               </Layout>
             </Router>
+            </ReviewProvider>
           </div>
         </FavoritesProvider>
       </RecommendationProvider>

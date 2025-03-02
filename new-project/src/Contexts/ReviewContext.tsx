@@ -8,7 +8,7 @@ interface Review {
 }
 
 interface ReviewContextType {
-  reviews: Record<number, Review[]>; // 영화별 리뷰 저장
+  reviews: Record<number, Review[]>; 
   addReview: (movieId: number, content: string) => void;
   deleteReview: (movieId: number, reviewId: number) => void;
 }
